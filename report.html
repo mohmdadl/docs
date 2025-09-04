@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Documentation: HR & Task Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .data-flow-container {
+        background-color: var(--bg-light-gray);
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+        padding: 2rem;
+        margin-top: 1.5rem;
+    }
+    .data-flow-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .data-flow-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #eef2ff;
+        color: var(--primary-accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+    .data-flow-label {
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+    .data-flow-desc {
+        font-size: 0.8rem;
+        color: var(--text-light);
+    }
+    .data-flow-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: #d1d5db;
+        align-self: center;
+    }
+    /* Responsive arrows for smaller screens */
+    @media (max-width: 767px) {
+        .data-flow-arrow {
+            transform: rotate(90deg);
+            margin: 1rem 0;
+        }
+    }
+
+        :root {
+            --primary-accent: #4338ca;
+            --secondary-accent: #059669;
+            --bg-light-gray: #f9fafb;
+            --text-dark: #111827;
+            --text-light: #6b7280;
+            --border-color: #e5e7eb;
+        }
+
+        body {
+            background-color: var(--bg-light-gray);
+            color: var(--text-dark);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .cover {
+            background-color: var(--text-dark);
+            background-image: linear-gradient(135deg, var(--primary-accent) 0%, #1f2937 74%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            border-radius: 1rem;
+        }
+
+        .cover h1 {
+            font-weight: 700;
+        }
+
+        .page {
+            background-color: white;
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            color: var(--primary-accent);
+            border-bottom: 2px solid var(--primary-accent);
+            padding-bottom: 0.75rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .screenshot {
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            background-color: var(--bg-light-gray);
+            text-align: center;
+        }
+
+        .screenshot img {
+            max-width: 100%;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .screenshot-caption {
+            font-style: italic;
+            color: var(--text-light);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .feature-card {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 0.75rem;
+        }
+
+        .feature-card-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-card-title i {
+            color: var(--primary-accent);
+        }
+
+        code {
+            background-color: #eef2ff;
+            color: var(--primary-accent);
+            padding: 0.2em 0.4em;
+            border-radius: 0.25rem;
+            font-weight: 600;
+        }
+
+        .data-flow {
+            position: relative;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+        }
+
+        .data-flow-arrow {
+            font-size: 1.5rem;
+            color: var(--primary-accent);
+        }
+
+        @media print {
+            body {
+                background-color: white !important;
+            }
+
+            .page {
+                box-shadow: none;
+                margin-bottom: 1.5rem;
+                padding: 0;
+                border: none;
+                page-break-inside: avoid;
+            }
+
+            /* .cover,
+            .no-print {
+                display: none;
+            } */
+
+            .section-header {
+                border-bottom: 2px solid #000;
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .screenshot {
+                padding: 0;
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container my-5 col-lg-9 mx-auto">
+
+        <!-- Cover Page -->
+        <div class="cover mb-5">
+            <h1 class="display-3">Project Documentation</h1>
+            <p class="lead fs-2">Role-Based HR & Task Management System</p>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.5);">
+            <p><strong>Team:</strong> Mohamed Adel Badr (Lead), Hady Hegazy, Manar Elnahty, Mohamed Hussain Elsayed,
+                Abdelrahman Sobhy</p>
+            <p><strong>Submission Date:</strong> September 4, 2025</p>
+        </div>
+
+        <!-- Section 1: Introduction -->
+        <div class="page" id="introduction">
+            <h2 class="section-header"><i class="bi bi-rocket-takeoff-fill me-3"></i>1. Introduction & Project Objective
+            </h2>
+            <p>This document provides a comprehensive overview of the design, features, and technical implementation of
+                the Role-Based HR & Task Management System, developed by Mohamed Adel Badr, Hady Hegazy, Manar Elnahty,
+                Mohamed Hussain Elsayed, and Abdelrahman Sobhy.</p>
+            <p class="lead">The primary objective was to develop a dynamic, single-page frontend application to
+                streamline core HR processes, including attendance, permission requests, and task assignments, while
+                providing real-time visualization of the financial impact on employee salaries.</p>
+            <p>The application is built using a modern frontend stack without a framework, emphasizing core web
+                technologies and robust architectural patterns.</p>
+        </div>
+
+        <!-- Section 2: Architecture -->
+<div class="page" id="architecture">
+    <h2 class="section-header"><i class="bi bi-diagram-3-fill me-3"></i>2. Core Technologies & Architecture</h2>
+    
+    <div class="feature-card">
+        <p class="feature-card-title"><i class="bi bi-stack me-2"></i>Frontend Stack</p>
+        <p class="mb-0">HTML5, CSS3, JavaScript (ES6+), and Bootstrap 5.3.2 for responsive components.</p>
+    </div>
+
+    <div class="feature-card">
+        <p class="feature-card-title"><i class="bi bi-database-fill-lock me-2"></i>Data Management & Flow</p>
+        <p>All application state is managed through a central <code>DataService</code> module. This service acts as an abstraction layer over the browser's <code>localStorage</code>, which serves as our persistent, serverless backend simulation. This ensures a Single Source of Truth for all application data.</p>
+        
+        <!-- Beautified Data Flow Diagram -->
+        <div class="data-flow-container">
+            <div class="row align-items-stretch">
+                <!-- Step 1: User Action -->
+                <div class="col-md">
+                    <div class="data-flow-step">
+                        <div class="data-flow-icon"><i class="bi bi-cursor-fill"></i></div>
+                        <div class="data-flow-label">1. User Action</div>
+                        <div class="data-flow-desc">(e.g., Clicks 'Save')</div>
+                    </div>
+                </div>
+                <div class="col-md-1 data-flow-arrow d-none d-md-flex">&rarr;</div>
+
+                <!-- Step 2: Event Handler -->
+                <div class="col-md">
+                    <div class="data-flow-step">
+                        <div class="data-flow-icon"><i class="bi bi-file-code-fill"></i></div>
+                        <div class="data-flow-label">2. Event Handler</div>
+                        <div class="data-flow-desc">(in <code>main.js</code> file)</div>
+                    </div>
+                </div>
+                <div class="col-md-1 data-flow-arrow d-none d-md-flex">&rarr;</div>
+
+                <!-- Step 3: DataService -->
+                <div class="col-md">
+                    <div class="data-flow-step">
+                        <div class="data-flow-icon"><i class="bi bi-server"></i></div>
+                        <div class="data-flow-label">3. DataService Call</div>
+                        <div class="data-flow-desc">(<code>DataService.save...()</code>)</div>
+                    </div>
+                </div>
+                <div class="col-md-1 data-flow-arrow d-none d-md-flex">&rarr;</div>
+                
+                <!-- Step 4: localStorage -->
+                <div class="col-md">
+                    <div class="data-flow-step">
+                        <div class="data-flow-icon"><i class="bi bi-hdd-stack-fill"></i></div>
+                        <div class="data-flow-label">4. Persistence</div>
+                        <div class="data-flow-desc">(Data is saved in <code>localStorage</code>)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="feature-card">
+        <p class="feature-card-title"><i class="bi bi-files me-2"></i>Project Structure & Modularity</p>
+        <p class="mb-0">Logic is strictly separated for maintainability:</p>
+        <ul>
+            <li><code>utils.js</code>: Contains all shared, pure business logic and helper functions (e.g., <code>calculateAttendanceDetails</code>, <code>SalaryCalculator</code>).</li>
+            <li><code>main.js</code>: Manages core, app-wide services like <code>DataService</code>, authentication, and dynamic navbar rendering (<code>renderNavbar</code>).</li>
+            <li>Role-specific files (<code>employee.js</code>, <code>manager.js</code>, etc.): Control the UI and handle events for their specific page.</li>
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="page" id="screens">
+            <h2 class="section-header"><i class="bi bi-display-fill me-3"></i>3. Screen-by-Screen Breakdown</h2>
+            <p class="lead">Each user role is presented with a unique interface tailored to their specific tasks and
+                responsibilities. The following is a detailed walkthrough of each primary screen and its key interactive
+                features.</p>
+
+            <hr class="my-5">
+
+            <h4 class="mb-4" id="global-components">3.1 Global Components & Authentication</h4>
+
+            <h5 class="fw-bold">Login Screen</h5>
+            <div class="screenshot">
+                <img src="docs/images/login.png" alt="Login Screen">
+                <p class="screenshot-caption">Fig 1.1: The application's secure and simple entry point.</p>
+            </div>
+            <p>The login screen authenticates users against the <code>employees</code> data model. Upon success, the
+                user object is stored as <code>currentUser</code> in <code>localStorage</code> for session management.
+            </p>
+
+            <h5 class="fw-bold mt-4">Dynamic Navbar & Theme Toggler</h5>
+            <div class="screenshot">
+                <img src="docs/images/navbar-theme-toggler.png" alt="Navbar with Theme Toggler">
+                <p class="screenshot-caption">Fig 1.2: The dynamic navbar adapts to the logged-in user, showing
+                    role-specific links and the theme toggler.</p>
+            </div>
+            <p>The <code>renderNavbar</code> function in <code>main.js</code> dynamically builds the navigation. The
+                theme toggler modifies the <code>data-bs-theme</code> attribute on the `<html>` element, allowing
+                Bootstrap's native color modes to manage the UI styling.</p>
+
+            <hr class="my-5">
+
+            <h4 class="mb-4" id="security">3.2 Security Dashboard (`security.html`)</h4>
+            <div class="screenshot">
+                <img src="docs/images/security-dashboard-interactive.png" alt="Interactive Security Dashboard">
+                <p class="screenshot-caption">Fig 2.1: The interactive attendance board, showing automated statuses,
+                    disabled fields for WFH, and visual flags for unsaved changes.</p>
+            </div>
+            <p>This is the control panel for daily attendance. The <code>renderBoard</code> function in
+                <code>security.js</code> is the core of this page. On load, it cross-references with approved requests
+                from the <code>permissionRequests</code> data to automatically set statuses like "Leave" or "Present
+                (WFH)", disabling inputs to prevent conflicting entries. User interactions, such as entering a check-in
+                time, trigger an <code>onchange</code> event that calls the <code>calculateAttendanceDetails</code>
+                function to provide instant, automated status updates.</p>
+
+            <hr class="my-5">
+
+            <h4 class="mb-4" id="employee">3.3 Employee Dashboard (`employee.html`)</h4>
+            <div class="screenshot">
+                <img src="docs/images/employee-dashboard-kpis.png" alt="Employee Dashboard KPIs">
+                <p class="screenshot-caption">Fig 3.1: The personalized dashboard with "at-a-glance" KPI cards and the
+                    "My Attendance" tab visible.</p>
+            </div>
+            <div class="screenshot">
+                <img src="docs/images/employee-request-center.png" alt="Employee Request Center">
+                <p class="screenshot-caption">Fig 3.2: The Request Center, showcasing the dynamic form and the request
+                    history with a "Pending" request ready for deletion.</p>
+            </div>
+            <div class="screenshot">
+                <img src="docs/images/employee-task-modal.png" alt="Employee Task Modal">
+                <p class="screenshot-caption">Fig 3.3: The Task Details modal, allowing the employee to view full
+                    details and update the task status.</p>
+            </div>
+            <div class="screenshot">
+                <img src="docs/images/employee-payroll-impact.png" alt="Employee Payroll Impact">
+                <p class="screenshot-caption">Fig 3.4: The unique payroll impact feature, providing full financial
+                    transparency with a detailed breakdown of all deductions.</p>
+            </div>
+            <p>A personalized hub organized into a tabbed interface. Key features include live quota validation in the
+                Request Center, an interactive task management modal for status updates, and the unique "My Payroll
+                Impact" tab for complete financial transparency, powered by the <code>SalaryCalculator</code>.</p>
+
+            <hr class="my-5">
+
+            <h4 class="mb-4" id="manager">3.4 Manager Dashboard (`manager.html`)</h4>
+            <div class="screenshot">
+                <img src="docs/images/manager-approval-queue.png" alt="Manager Approval Queue">
+                <p class="screenshot-caption">Fig 4.1: The manager's primary view, the approval queue, filtered to show
+                    various pending requests from their direct reports.</p>
+            </div>
+            <div class="screenshot">
+                <img src="docs/images/modal-reject.png" alt="Manager Rejection Modal">
+                <p class="screenshot-caption">Fig 4.2: The mandatory rejection reason modal, which ensures transparent
+                    decision-making.</p>
+            </div>
+            <div class="screenshot">
+                <img src="docs/images/manager-task-creation.png" alt="Manager Task Creation Modal">
+                <p class="screenshot-caption">Fig 4.3: The intuitive modal for creating new tasks, showing the list of
+                    team members to assign.</p>
+            </div>
+            <p>A command center focused on decision-making. The <code>renderApprovalsQueue</code> function filters
+                requests based on the manager's <code>currentUser.id</code>. Actions are handled by
+                <code>handleApproval</code> and <code>handleRejection</code>, which update the data and re-render the UI
+                for immediate feedback. Task creation is handled via a modal that includes validation to prevent
+                past-due deadlines.</p>
+
+            <div class="screenshot">
+                <img src="docs/images/manager-team-info.png" alt="Manager Team Info View">
+                <p class="screenshot-caption">Fig 4.4: The "Team Info" view, providing the manager with a quick
+                    reference for their direct reports.</p>
+            </div>
+            <p class="mt-4">
+                In addition to managing approvals and tasks, the dashboard includes a <strong>"Team Info"</strong>
+                section. This provides the manager with a comprehensive list of their team members, displaying key
+                information at a glance. This feature centralizes team data, making it unnecessary for the manager to
+                search for employee details in different systems.
+            </p>
+
+            <hr class="my-5">
+
+            <h4 class="mb-4" id="hr">3.5 HR/Admin Dashboard (`hr.html`)</h4>
+            <div class="screenshot">
+                <img src="docs/images/hr-payroll-report.png" alt="HR Payroll Report">
+                <p class="screenshot-caption">Fig 5.1: The powerful aggregate payroll report, with the "Export to CSV"
+                    feature ready.</p>
+            </div>
+            <div class="screenshot">
+                <img src="docs/images/hr-ideal-employee.png" alt="HR Ideal Employee Feature">
+                <p class="screenshot-caption">Fig 5.2: The "Ideal Employee" feature, which automatically calculates and
+                    displays the winner based on strict performance criteria.</p>
+            </div>
+            <div class="screenshot">
+                <img src="docs/images/hr-attendance-report.png" alt="HR Attendance Records Report">
+                <p class="screenshot-caption">Fig 5.2: The detailed monthly Attendance Records report, allowing HR to
+                    audit and review daily entries.</p>
+            </div>
+            <p class="mt-4">
+                Complementing the financial summary, the HR dashboard includes a detailed <strong>Attendance Records
+                    Report</strong>. This tool allows the HR admin to select any month and generate a granular,
+                day-by-day log of all attendance records across the company. This is crucial for auditing purposes,
+                resolving disputes, and analyzing attendance patterns over time.
+            </p>
+            <div class="screenshot">
+                <img src="docs/images/hr-settings.png" alt="HR Settings Form">
+                <p class="screenshot-caption">Fig 5.3: The configuration panel where HR can control the application's
+                    core business rules.</p>
+            </div>
+            <p>The highest-level oversight and configuration center. HR can view company-wide KPIs, generate and export
+                detailed financial reports using the <code>SalaryCalculator</code> and <code>exportToCsv</code>
+                functions, manage system-wide business rules, and view the automatically calculated "Ideal Employee of
+                the Month".</p>
+        </div>
+
+
+
+        <!-- Section 4: Validation -->
+        <div class="page" id="validation">
+            <h2 class="section-header"><i class="bi bi-shield-fill-check me-3"></i>4. Key Validation & Business Rules
+            </h2>
+            <p>The application's robustness is ensured by its embedded business logic and real-time validation, which
+                provide a guided, error-preventive user experience.</p>
+
+            <div class="feature-card">
+                <p class="feature-card-title"><i class="bi bi-calendar-x me-2"></i>Request Quota Enforcement (Live)</p>
+                <p class="mb-0">The Request Center provides live validation. If an employee attempts to submit a WFH
+                    request exceeding their weekly quota, the "Submit" button is disabled in real-time via an
+                    <code>onchange</code> event listener, preventing invalid submissions.</p>
+            </div>
+            <div class="feature-card">
+                <p class="feature-card-title"><i class="bi bi-shield-exclamation me-2"></i>Proactive Task Deadline
+                    Validation</p>
+                <p class="mb-0">Managers are prevented from creating tasks with a deadline in the past. An
+                    <code>oninput</code> event listener validates the date, adds an "is-invalid" class to the input, and
+                    disables the "Save Task" button until a valid future date is selected.</p>
+            </div>
+            <div class="feature-card">
+                <p class="feature-card-title"><i class="bi bi-chat-left-dots-fill me-2"></i>Mandatory Rejection Reason
+                </p>
+                <p class="mb-0">To ensure transparency, a manager cannot reject a request without providing a reason.
+                    Clicking "Reject" opens a mandatory modal, and the reason is saved and displayed to the employee.
+                </p>
+            </div>
+            <div class="feature-card">
+                <p class="feature-card-title"><i class="bi bi-robot me-2"></i>Automated Status Logic</p>
+                <p class="mb-0">The <code>calculateAttendanceDetails</code> function in <code>utils.js</code> acts as
+                    the single source of truth for attendance status, ensuring consistency and removing guesswork for
+                    the Security team.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
